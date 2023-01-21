@@ -21,4 +21,5 @@ RUN mkdir __pypackages__ && pdm install --prod --no-lock --no-editable
 
 COPY . .
 
+RUN pdm run migrate
 CMD ["pdm", "run", "start"]
