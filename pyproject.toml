@@ -1,12 +1,18 @@
 [tool.pdm]
 
 [tool.pdm.scripts]
+# lints
 black = "black ."
 isort = "isort ."
 flake = "flake8 ."
 lint = {composite = ["black", "isort", "flake"]}
 
+# test
 test = "pytest ."
+
+# app
+start.cmd = "python -m the_world_after"
+start.env_file = ".env"
 
 [tool.pdm.dev-dependencies]
 dev = [
@@ -31,6 +37,7 @@ authors = [
 ]
 dependencies = [
     "aiogram==3.0.0b6",
+    "pyyaml>=6.0",
 ]
 requires-python = ">=3.11"
 readme = "README.md"
