@@ -20,7 +20,11 @@ async def on_startup(bot: Bot):
     await check_session()
 
     if settings.IS_WEBHOOK:
-        await bot.set_webhook(f"{settings.APP_URL}{settings.APP_EVENTS_PATH}")
+        await bot.set_webhook(
+            f"{settings.APP_URL}{settings.APP_EVENTS_PATH}",
+            max_connections=settings.TELEGRAM_MAX_CONNECTIONS,
+            secret_token=settings.TELEGRAM_SECRET_KEY,
+        )
 
 
 async def on_shutdown(bot: Bot):

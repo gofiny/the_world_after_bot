@@ -1,4 +1,6 @@
-from pydantic import BaseSettings, PostgresDsn
+from typing import Optional
+
+from pydantic import BaseSettings, PositiveInt, PostgresDsn
 
 
 class Settings(BaseSettings):
@@ -9,6 +11,8 @@ class Settings(BaseSettings):
 
     IS_WEBHOOK: bool = False
     TELEGRAM_TOKEN: str
+    TELEGRAM_MAX_CONNECTIONS: PositiveInt = 50
+    TELEGRAM_SECRET_KEY: Optional[str] = None
 
     LOG_CONFIG: str
 
