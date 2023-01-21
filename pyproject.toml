@@ -1,3 +1,25 @@
+[project]
+name = "the_world_after_bot"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "Gofiny", email = "gofiny@inbox.ru"},
+]
+dependencies = [
+    "aiogram==3.0.0b6",
+    "pyyaml>=6.0",
+    "sqlalchemy[asyncio]>=1.4.46",
+    "alembic>=1.9.2",
+    "asyncpg>=0.27.0",
+]
+requires-python = ">=3.11"
+readme = "README.md"
+license = {text = "MIT"}
+
+[build-system]
+requires = ["pdm-pep517>=1.0"]
+build-backend = "pdm.pep517.api"
+
 [tool.pdm]
 
 [tool.pdm.scripts]
@@ -22,27 +44,9 @@ dev = [
     "pytest[asyncio]>=7.2.1",
 ]
 [tool.black]
-line-lengh = 79
+line-length = 79
 
 [tool.isort]
 profile = "black"
 line_length = 79
 
-[project]
-name = "the_world_after_bot"
-version = "0.1.0"
-description = ""
-authors = [
-    {name = "Gofiny", email = "gofiny@inbox.ru"},
-]
-dependencies = [
-    "aiogram==3.0.0b6",
-    "pyyaml>=6.0",
-]
-requires-python = ">=3.11"
-readme = "README.md"
-license = {text = "MIT"}
-
-[build-system]
-requires = ["pdm-pep517>=1.0"]
-build-backend = "pdm.pep517.api"
