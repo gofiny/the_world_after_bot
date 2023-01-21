@@ -2,10 +2,10 @@ import asyncio
 import logging
 
 from alembic import context
-from the_world_after.db.db import Base
 from sqlalchemy import engine_from_config, pool
 from sqlalchemy.ext.asyncio import AsyncEngine
 
+from the_world_after.db.db import Base
 from the_world_after.settings import settings
 from the_world_after.utils.logs import init_logger
 

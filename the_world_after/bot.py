@@ -35,7 +35,7 @@ def prepare_app(bot: Bot, dispatcher: Dispatcher) -> Application:
     SimpleRequestHandler(
         dispatcher=dispatcher,
         bot=bot,
-    ).register(app, path="/webhook")
+    ).register(app, path=settings.APP_EVENTS_PATH)
     setup_application(app, dispatcher, bot=bot)
 
     return app
