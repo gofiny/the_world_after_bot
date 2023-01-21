@@ -14,3 +14,17 @@ services:
     networks: [ 'shared' ]
     ports:
       - "5432:5432"
+
+  the_world_after_bot:
+    depends_on:
+      - db
+    build: .
+    restart: on-failure
+    networks: [ 'shared' ]
+    env_file:
+      - .env
+    privileged: true
+    ports:
+      - "8000:8000"
+    volumes:
+      - '/var/run/docker.sock:/var/run/docker.sock'
