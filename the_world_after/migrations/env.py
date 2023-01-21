@@ -1,17 +1,8 @@
 import asyncio
 import logging
 
-import bank_core.migrations.partition_ops  # noqa: F401
 from alembic import context
-from bank_core.db.core import SABase
-from bank_core.db.models import (  # noqa: F401
-    MessageMQIn,
-    MessageMQOut,
-    MessageRESTIn,
-    MessageRESTOut,
-    files,
-    marketplace_application,
-)
+from the_world_after.db.db import Base
 from sqlalchemy import engine_from_config, pool
 from sqlalchemy.ext.asyncio import AsyncEngine
 
@@ -31,7 +22,7 @@ config.set_main_option("sqlalchemy.url", str(settings.DB_DSN))
 # This line sets up loggers basically.
 
 # add your model's MetaData object here for 'autogenerate' support
-target_metadata = (SABase.metadata,)
+target_metadata = (Base.metadata,)
 
 
 # other values from the config, defined by the needs of env.py, can be acquir:
