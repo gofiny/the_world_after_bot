@@ -10,6 +10,8 @@ from aiohttp.web_app import Application
 
 from the_world_after.db.db import check_session
 from the_world_after.routers import base
+from the_world_after.utils.middlewares import RegistrationMiddleware
+from the_world_after.utils.postgres_storage import PostgresStorage
 
 from .settings import settings
 
@@ -47,9 +49,11 @@ def prepare_app(bot: Bot, dispatcher: Dispatcher) -> Application:
 
 def run_bot():
     bot = Bot(token=settings.TELEGRAM_TOKEN, parse_mode="HTML")
-    dispatcher = Dispatcher()
+    dispatcher = Dispatcher(storage=PostgresStorage())
     dispatcher["base_url"] = settings.APP_URL
     dispatcher.startup.register(on_startup)
+
+    dispatcher.update.outer_middleware(RegistrationMiddleware())
 
     dispatcher.include_router(base.router)
 
